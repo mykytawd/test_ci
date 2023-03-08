@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Create some new file
-        run: echo "text" > "$((shuf -i 10000-99999 -n 1).txt"
+        run: echo "text" > "$(shuf -i 10000-99999 -n 1).txt"
 
       - name: Setup git
         run: git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com" && git config --global user.name "github-actions[bot]"
