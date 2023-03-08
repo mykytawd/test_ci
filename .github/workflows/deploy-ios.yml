@@ -30,6 +30,8 @@ jobs:
 
       - name: Commit bump version
         run: git commit -a -m "add new file"
+        
+      - run: git pull origin main
 
       - name: Push changes
         uses: ad-m/github-push-action@master
