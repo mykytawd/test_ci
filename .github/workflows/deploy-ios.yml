@@ -31,7 +31,9 @@ jobs:
       - name: Commit bump version
         run: git commit -a -m "add new file"
       
-      - run: git pull
+      - run: git pull origin ${{ github.head_ref }}
 
       - name: Push changes
         uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.head_ref }}
