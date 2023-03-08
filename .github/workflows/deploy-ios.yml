@@ -30,11 +30,8 @@ jobs:
 
       - name: Commit bump version
         run: git commit -a -m "add new file"
-      
-      - name: Check for changes
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Push changes
         uses: ad-m/github-push-action@master
+        with:
+          force: true
