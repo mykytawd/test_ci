@@ -26,7 +26,7 @@ jobs:
       - run: git add .
 
       - name: Setup git
-        run: git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com" && git config --global user.name "github-actions[bot]" && git config --global pull.ff only
+        run: git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com" && git config --global user.name "github-actions[bot]" && git config --global pull.rebase true
 
       - name: Commit bump version
         run: git commit -a -m "add new file"
