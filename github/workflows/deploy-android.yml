@@ -1,0 +1,32 @@
+name: Deploy Android
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Create some new file
+        run: \ filename=$(shuf -i 10000-99999 -n 1)
+             \ echo "text" > "$filename.txt"
+
+      - name: Setup git
+        run: git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com" && git config --global user.name "github-actions[bot]"
+
+      - name: Commit bump version
+        run: git commit -a -m "add new file"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
